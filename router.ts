@@ -1,4 +1,5 @@
 import { app } from "./app";
+import http from 'http';
 
 class Router {
   private _endpoints : IEndpoints
@@ -7,7 +8,7 @@ class Router {
     this._endpoints = {};
   }
 
-  private _addEndPointHandler(path : string, method : EMethods, handler : (req : any, res : any) => any) {
+  private _addEndPointHandler(path : string, method : EMethods, handler : (req : http.IncomingMessage, res : http.ServerResponse) => void) {
 
     if (this._endpoints[path]) {
       if (this._endpoints[path][method]) {
@@ -21,19 +22,19 @@ class Router {
     app.getEmmiter.on(app.getEmmiterTemplateString(path, method), handler)
   }
 
-  get(path : string, handler : (req : any, res : any) => any) {
+  get(path : string, handler : (req : http.IncomingMessage, res : http.ServerResponse) => void) {
     this._addEndPointHandler(path, EMethods.GET, handler)
   }
 
-  post(path : string, handler : (req : any, res : any) => any) {
+  post(path : string, handler : (req : http.IncomingMessage, res : http.ServerResponse) => void) {
     this._addEndPointHandler(path, EMethods.POST, handler)
   }
 
-  put(path : string, handler : (req : any, res : any) => any) {
+  put(path : string, handler : (req : http.IncomingMessage, res : http.ServerResponse) => void) {
     this._addEndPointHandler(path, EMethods.PUT, handler)
   }
 
-  delete(path : string, handler : (req : any, res : any) => any) {
+  delete(path : string, handler : (req : http.IncomingMessage, res : http.ServerResponse) => void) {
     this._addEndPointHandler(path, EMethods.DELETE, handler)
   }  
 }
@@ -42,10 +43,10 @@ export const router = new Router()
 
 interface IEndpoints {
   [route : string] : {
-    GET  ?: (req : any, res : any) => any,
-    POST ?: (req : any, res : any) => any,
-    PUT ?: (req : any, res : any) => any,
-    DELETE ?: (req : any, res : any) => any
+    GET  ?: (req : http.IncomingMessage, res : http.ServerResponse) => void,
+    POST ?: (req : http.IncomingMessage, res : http.ServerResponse) => void,
+    PUT ?: (req : http.IncomingMessage, res : http.ServerResponse) => void,
+    DELETE ?: (req : http.IncomingMessage, res : http.ServerResponse) => void
    };
 }
 
