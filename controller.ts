@@ -1,4 +1,4 @@
-import http from 'http';
+import * as http from 'http'
 import { validate, v4 as uuidV4 } from 'uuid';
 
 class UserController {

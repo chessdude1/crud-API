@@ -1,5 +1,5 @@
 import { app } from "./app";
-import http from 'http';
+import * as http from 'http'
 
 class Router {
   private _endpoints : IEndpoints

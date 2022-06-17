@@ -1,5 +1,5 @@
-import http from 'http';
-import EventEmitter from 'events';
+import * as http from 'http'
+import {EventEmitter} from 'events';
 import { EMethods } from './router';
 import { URLParser } from './urlParser';
 
