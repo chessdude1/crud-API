@@ -21,6 +21,8 @@ class App {
       });
 
       req.on('end', () => {
+        const data = JSON.parse(body || '{}');
+
         const isEmmited = this.getEmmiter.emit(
           this.getEmmiterTemplateString(
             url,
@@ -28,7 +30,8 @@ class App {
           ),
           req,
           res,
-          id
+          id,
+          data
         );
         if (!isEmmited) {
           res.writeHead(404, {

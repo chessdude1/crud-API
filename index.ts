@@ -8,7 +8,12 @@ const server = app._createServer();
 
 server.listen(PORT, () => console.log(`Server is started on PORT: ${PORT}`));
 
-router.get('/api/users', userController.getUsers);
-router.get('/api/users/', userController.getUser);
+//if route will be used with query fro example api/users/${userId} route should be used with end /
 
-router.post('/api/users/', userController.getUser);
+router.get('/api/users', userController.getUsers);
+
+router.post('/api/users', userController.postUser);
+
+router.put('/api/users', userController.putUser);
+
+router.delete('/api/users', userController.deleteUser);
