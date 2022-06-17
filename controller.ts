@@ -17,7 +17,7 @@ class UserController {
       this.getUser(req, res, id);
     }
 
-    this._responseConstructor(req, res, this.users, 400);
+    this._responseConstructor(req, res, this.users, 200);
   };
 
   getUser = (

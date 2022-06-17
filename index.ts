@@ -4,9 +4,7 @@ import { app } from './app';
 import { router } from './router';
 const PORT = process.env.PORT || 3000;
 
-const server = app._createServer();
-
-const HOST = '127.0.0.1';
+export const server = app._createServer();
 
 server.listen(PORT, () => console.log(`Server is started on PORT: ${PORT}`));
 
