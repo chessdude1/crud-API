@@ -1,20 +1,16 @@
-import {cpus} from 'os';
-let cluster = require('cluster');
+import { cpus } from 'os'
+let cluster = require('cluster')
 
 if (cluster.isWorker) {
-  console.log(
-    `Worker ${cluster.worker.id} handle request`
-  );
+  console.log(`Worker ${cluster.worker.id} handle request`)
 }
 
-
 if (cluster.isMaster) {
-  const cpusCount = cpus().length;
+  const cpusCount = cpus().length
 
-  for (let i = 0; i < cpusCount; i++) cluster.fork();
+  for (let i = 0; i < cpusCount; i++) cluster.fork()
 }
 
 if (cluster.isWorker) {
   require('./index')
 }
-  

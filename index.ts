@@ -1,20 +1,18 @@
-import { userController } from './controller';
-require('dotenv').config();
-import { app } from './app';
-import { router } from './router';
-const PORT = process.env.PORT || 3000;
+import { userController } from './controller'
+require('dotenv').config()
+import { app } from './app'
+import { router } from './router'
 
-export const server = app._createServer();
+const PORT = process.env.PORT || 3000
 
-server.listen(PORT, () => console.log(`Server is started on PORT: ${PORT}`));
+export const server = app._createServer()
 
-router.get('/api/users', userController.getUsers);
+server.listen(PORT, () => console.log(`Server is started on PORT: ${PORT}`))
 
-router.post('/api/users', userController.postUser);
+router.get('/api/users', userController.getUsers)
 
-router.put('/api/users', userController.putUser);
+router.post('/api/users', userController.postUser)
 
-router.delete('/api/users', userController.deleteUser);
+router.put('/api/users', userController.putUser)
 
-
-
+router.delete('/api/users', userController.deleteUser)
