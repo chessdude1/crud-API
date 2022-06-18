@@ -1,8 +1,7 @@
-import { server } from './../index';
+import { server } from './../index'
 import * as request from 'supertest'
 
-describe('put test case',  () => {
-  
+describe('put test case', () => {
   it('put not required field in user', async () => {
     const res = await request(server)
       .post('/api/users')
