@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
     "prod": "tsc && node ./build/index.js",
     "dev": "nodemon index.ts",
     "test": "jest --forceExit",
